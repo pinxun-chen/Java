@@ -4,7 +4,10 @@ import com.example.demo.model.dto.UserDto;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +52,7 @@ public class UserController {
                     .body(ApiResponse.error(401, "登入失敗：帳號或密碼錯誤"));
         }
     }
+    
 
     // 依 ID 查詢使用者
     @GetMapping("/{id}")
@@ -64,7 +68,7 @@ public class UserController {
     }
 
     // 依帳號查詢使用者
-    @GetMapping("/username/{username}")
+    @GetMapping("/name/{username}")
     public ResponseEntity<ApiResponse<?>> getUserByUsername(@PathVariable String username) {
         Optional<UserDto> userOpt = userService.getUserByUsername(username);
         if (userOpt.isPresent()) {
