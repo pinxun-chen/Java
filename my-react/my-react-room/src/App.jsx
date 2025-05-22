@@ -7,7 +7,9 @@ function App() {
   const [rooms, setRooms] = useState([]);
   const [form, setForm] = useState({roomId:'', roomName:'', roomSize:''});
   const [isEditing, setIsEditing] = useState(false); // 用來判斷編輯模式
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+
   useEffect(() => {
     console.log('檢查是否已經登入');
     checkLoginStatus();
@@ -102,9 +104,6 @@ function App() {
   };
 
   // -- 登入用 ----------------------------------------------------------------------
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
-
   // 檢查登入狀態(是否已經登入過?)
   const checkLoginStatus = async () => {
     try {
@@ -253,50 +252,49 @@ function App() {
           </fieldset>
         </form>
       )}
-      {isLoggedIn &&
-        <table border="1" cellPadding="10">
-          <thead>
-            <tr>
-              <th>房號</th>
-              <th>房名</th>
-              <th>人數</th>
-              <th>編輯</th>
-              <th>刪除</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              rooms.map(room => {
-                return (
-                  <tr key={room.roomId}>
-                    <td>{room.roomId}</td>
-                    <td>{room.roomName}</td>
-                    <td>{room.roomSize}</td>
-                    <td>
-                      
+
+      <table border="1" cellPadding="10">
+        <thead>
+          <tr>
+            <th>房號</th>
+            <th>房名</th>
+            <th>人數</th>
+            <th>編輯</th>
+            <th>刪除</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rooms.map(room => {
+              return (
+                <tr key={room.roomId}>
+                  <td>{room.roomId}</td>
+                  <td>{room.roomName}</td>
+                  <td>{room.roomSize}</td>
+                  <td>
+                    {isLoggedIn && (
                       <button onClick={() => handleEdit(room)}>編輯</button>
-                      
-                    </td>
-                    <td>
-                      
+                    )}
+                  </td>
+                  <td>
+                    {isLoggedIn && (
                       <button onClick={() => {handleDelete(room.roomId)}}>刪除</button>
-                      
-                    </td>
-                  </tr>
-                )
-              })
-            }
-            
-            {
-              rooms.length === 0 && (
-                <tr>
-                  <td colSpan="5">無資料</td>
+                    )}
+                  </td>
                 </tr>
               )
-            }
-          </tbody>
-        </table>
-      }
+            })
+          }
+
+          {
+            rooms.length === 0 && (
+              <tr>
+                <td colSpan="5">無資料</td>
+              </tr>
+            )
+          }
+        </tbody>
+      </table>
     </div>
   );
 }
