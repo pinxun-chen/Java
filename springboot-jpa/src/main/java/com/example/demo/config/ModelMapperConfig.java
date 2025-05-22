@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration // Springboot 啟動完成前會先執行此配置
+
+
 public class ModelMapperConfig {
 	
 	// Springboot 會自動建立此物件並管理
