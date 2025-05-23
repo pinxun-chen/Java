@@ -1,8 +1,8 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.dto.UserDto;
-import com.example.demo.model.dto.VerificationToken;
 import com.example.demo.model.entity.User;
+import com.example.demo.model.entity.VerificationToken;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.VerificationTokenRepository;
 import com.example.demo.service.EmailService;

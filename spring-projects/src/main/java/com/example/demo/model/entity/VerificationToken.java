@@ -1,11 +1,9 @@
-package com.example.demo.model.dto;
+package com.example.demo.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-
-import com.example.demo.model.entity.User;
 
 @Entity
 @Data

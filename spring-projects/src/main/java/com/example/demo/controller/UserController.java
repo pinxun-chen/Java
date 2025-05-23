@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.dto.ChangePasswordRequestDto;
+import com.example.demo.model.dto.RegisterRequestDto;
 import com.example.demo.model.dto.UserDto;
-import com.example.demo.model.dto.VerificationToken;
 import com.example.demo.model.entity.User;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.repository.VerificationTokenRepository;
+import com.example.demo.model.entity.VerificationToken;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.UserService;
 
@@ -40,12 +39,9 @@ public class UserController {
 
     // 註冊
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<Void>> register(
-            @RequestParam String username,
-            @RequestParam String password,
-            @RequestParam String email) {
+    public ResponseEntity<ApiResponse<Void>> register(@RequestBody RegisterRequestDto request) {
+        boolean success = userService.register(request.getUsername(), request.getPassword(), request.getEmail());
 
-        boolean success = userService.register(username, password, email);
         if (success) {
             return ResponseEntity.ok(ApiResponse.success("註冊成功", null));
         } else {
@@ -54,6 +50,7 @@ public class UserController {
                     .body(ApiResponse.error(400, "帳號或信箱已存在"));
         }
     }
+
 
     // 依 ID 查詢使用者
     @GetMapping("/{id}")
