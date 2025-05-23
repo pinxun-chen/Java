@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -36,23 +36,6 @@ public class UserController {
                     .body(ApiResponse.error(400, "帳號或信箱已存在"));
         }
     }
-
-    // 登入
-    @PostMapping("/login")
-    public ResponseEntity<ApiResponse<?>> login(
-            @RequestParam String username,
-            @RequestParam String password) {
-
-        UserDto userDto = userService.login(username, password);
-        if (userDto != null) {
-            return ResponseEntity.ok(ApiResponse.success("登入成功", userDto));
-        } else {
-            return ResponseEntity
-                    .status(401)
-                    .body(ApiResponse.error(401, "登入失敗：帳號或密碼錯誤"));
-        }
-    }
-    
 
     // 依 ID 查詢使用者
     @GetMapping("/{id}")
