@@ -72,14 +72,14 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
-    public boolean changePassword(String username, String Password, String newPassword) {
+    public boolean changePassword(String username, String oldPassword, String newPassword) {
         Optional<User> userOpt = userRepository.findByUsername(username);
 
         if (userOpt.isPresent()) {
             User user = userOpt.get();
 
             // 驗證舊密碼
-            String hashedOldPassword = Hash.getHash(Password, user.getSalt());
+            String hashedOldPassword = Hash.getHash(oldPassword, user.getSalt());
             if (!hashedOldPassword.equals(user.getPasswordHash())) {
                 return false; // 原密碼錯誤
             }

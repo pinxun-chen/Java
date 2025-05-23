@@ -10,5 +10,5 @@ public interface UserService {
     UserDto login(String username, String password);
     Optional<UserDto> getUserById(Integer userId);
     Optional<UserDto> getUserByUsername(String username);
-    boolean changePassword(String username, String Password, String newPassword);
+    boolean changePassword(String username, String oldPassword, String newPassword);
 }
