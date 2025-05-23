@@ -70,4 +70,32 @@ public class UserServiceImpl implements UserService {
     public Optional<UserDto> getUserByUsername(String username) {
         return userRepository.findByUsername(username).map(userMapper::toDto);
     }
+    
+    @Override
+    public boolean changePassword(String username, String Password, String newPassword) {
+        Optional<User> userOpt = userRepository.findByUsername(username);
+
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+
+            // 驗證舊密碼
+            String hashedOldPassword = Hash.getHash(Password, user.getSalt());
+            if (!hashedOldPassword.equals(user.getPasswordHash())) {
+                return false; // 原密碼錯誤
+            }
+
+            // 設定新密碼
+            String newSalt = Hash.getSalt();
+            String newHash = Hash.getHash(newPassword, newSalt);
+            user.setSalt(newSalt);
+            user.setPasswordHash(newHash);
+
+            userRepository.save(user);
+            return true;
+        }
+
+        return false; // 使用者不存在
+    }
+
+    
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.dto.ChangePasswordRequestDto;
 import com.example.demo.model.dto.UserDto;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.UserService;
@@ -50,7 +51,7 @@ public class UserController {
         }
     }
 
-    // 依帳號查詢使用者
+    // 依 name 查詢使用者
     @GetMapping("/name/{username}")
     public ResponseEntity<ApiResponse<?>> getUserByUsername(@PathVariable String username) {
         Optional<UserDto> userOpt = userService.getUserByUsername(username);
@@ -60,6 +61,24 @@ public class UserController {
             return ResponseEntity
                     .status(404)
                     .body(ApiResponse.error(404, "找不到使用者"));
+        }
+    }
+    
+    // 更改密碼
+    @PutMapping("/change-password")
+    public ResponseEntity<ApiResponse<Void>> changePassword(
+            @RequestBody ChangePasswordRequestDto request) {
+
+        boolean success = userService.changePassword(
+            request.getUsername(), 
+            request.getOldPassword(), 
+            request.getNewPassword()
+        );
+
+        if (success) {
+            return ResponseEntity.ok(ApiResponse.success("密碼更新成功", null));
+        } else {
+            return ResponseEntity.status(400).body(ApiResponse.error(400, "密碼錯誤或使用者不存在"));
         }
     }
 }
