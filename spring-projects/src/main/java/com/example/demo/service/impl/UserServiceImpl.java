@@ -1,0 +1,73 @@
+package com.example.demo.service.impl;
+
+import com.example.demo.model.dto.UserDto;
+import com.example.demo.model.entity.User;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserService;
+import com.example.demo.util.Hash;
+import com.example.demo.mapper.UserMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    // 使用者註冊
+    @Override
+    public boolean register(String username, String password, String email) {
+        if (userRepository.existsByUsername(username) || userRepository.existsByEmail(email)) {
+            return false;
+        }
+
+        String salt = Hash.getSalt();
+        String passwordHash = Hash.getHash(password, salt);
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPasswordHash(passwordHash);
+        user.setSalt(salt);
+        user.setEmail(email);
+        user.setActive(true);
+        user.setRole("USER");
+
+        userRepository.save(user);
+        return true;
+    }
+
+    // 使用者登入
+    @Override
+    public UserDto login(String username, String password) {
+        Optional<User> userOpt = userRepository.findByUsername(username);
+
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            String hash = Hash.getHash(password, user.getSalt());
+            if (hash.equals(user.getPasswordHash())) {
+                return userMapper.toDto(user);
+            }
+        }
+
+        return null;
+    }
+
+    // 依 ID 查詢使用者
+    @Override
+    public Optional<UserDto> getUserById(Integer userId) {
+        return userRepository.findById(userId).map(userMapper::toDto);
+    }
+
+    // 依帳號查詢使用者
+    @Override
+    public Optional<UserDto> getUserByUsername(String username) {
+        return userRepository.findByUsername(username).map(userMapper::toDto);
+    }
+}
