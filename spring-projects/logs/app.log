@@ -899,3 +899,9 @@ java.lang.IllegalStateException: Ambiguous handler methods mapped for '/api/user
 2025-05-23T11:45:08.623+08:00  INFO 4588 --- [springboot-jpa] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-05-23T11:45:08.623+08:00  INFO 4588 --- [springboot-jpa] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-05-23T11:45:08.623+08:00  INFO 4588 --- [springboot-jpa] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-05-23T11:51:30.257+08:00  INFO 4588 --- [springboot-jpa] [RMI TCP Connection(17)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-05-23T11:51:30.259+08:00  INFO 4588 --- [springboot-jpa] [RMI TCP Connection(17)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-23T11:51:30.261+08:00  INFO 4588 --- [springboot-jpa] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-23T11:51:30.263+08:00  INFO 4588 --- [springboot-jpa] [RMI TCP Connection(17)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-23T11:51:30.264+08:00  INFO 4588 --- [springboot-jpa] [RMI TCP Connection(17)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-23T11:51:30.268+08:00  INFO 4588 --- [springboot-jpa] [RMI TCP Connection(17)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
