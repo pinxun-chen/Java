@@ -42,9 +42,4 @@ public class User {
 	@Column(name = "role")
 	private String role;
 	
-	@Column(name = "verification_token")
-	private String verificationToken;
-
-	@Column(name = "token_expiry")
-	private LocalDateTime tokenExpiry;
 }

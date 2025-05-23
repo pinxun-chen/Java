@@ -1,16 +1,22 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.dto.UserDto;
+import com.example.demo.model.dto.VerificationToken;
 import com.example.demo.model.entity.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.VerificationTokenRepository;
+import com.example.demo.service.EmailService;
 import com.example.demo.service.UserService;
 import com.example.demo.util.Hash;
 import com.example.demo.mapper.UserMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,6 +26,15 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
+
+    @Autowired
+    private EmailService emailService;
+
+    @Value("${app.verification-url}")
+    private String verificationBaseUrl;
 
     // 使用者註冊
     @Override
@@ -36,10 +51,18 @@ public class UserServiceImpl implements UserService {
         user.setPasswordHash(passwordHash);
         user.setSalt(salt);
         user.setEmail(email);
-        user.setActive(true);
+        user.setActive(false); // 尚未啟用
         user.setRole("USER");
 
-        userRepository.save(user);
+        user = userRepository.save(user); // 存檔以取得 ID
+
+        String token = UUID.randomUUID().toString();
+        VerificationToken verificationToken = new VerificationToken(null, token, user, LocalDateTime.now().plusDays(1));
+        tokenRepository.save(verificationToken);
+
+        String verificationUrl = verificationBaseUrl + token;
+        emailService.sendVerificationEmail(user.getEmail(), verificationUrl);
+
         return true;
     }
 
@@ -95,6 +118,28 @@ public class UserServiceImpl implements UserService {
         }
 
         return false; // 使用者不存在
+    }
+    
+    @Override
+    public boolean verifyUser(String token) {
+        Optional<VerificationToken> tokenOpt = tokenRepository.findByToken(token);
+        if (tokenOpt.isEmpty()) {
+            return false;
+        }
+
+        VerificationToken verificationToken = tokenOpt.get();
+
+        // 檢查是否過期
+        if (verificationToken.getExpiryDate().isBefore(LocalDateTime.now())) {
+            return false;
+        }
+
+        User user = verificationToken.getUser();
+        user.setActive(true);
+        userRepository.save(user);
+        tokenRepository.delete(verificationToken);
+
+        return true;
     }
 
     

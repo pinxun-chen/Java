@@ -2,6 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.model.dto.ChangePasswordRequestDto;
 import com.example.demo.model.dto.UserDto;
+import com.example.demo.model.dto.VerificationToken;
+import com.example.demo.model.entity.User;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.VerificationTokenRepository;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.UserService;
 
@@ -12,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +25,18 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    // 驗證信箱 
+    @GetMapping("/verify")
+    public ResponseEntity<ApiResponse<Void>> verifyUser(@RequestParam String token) {
+        boolean verified = userService.verifyUser(token);
+        if (verified) {
+            return ResponseEntity.ok(ApiResponse.success("帳號驗證成功", null));
+        } else {
+            return ResponseEntity.status(400).body(ApiResponse.error(400, "驗證連結無效或已過期"));
+        }
+    }
+
 
     // 註冊
     @PostMapping("/register")
