@@ -23,10 +23,10 @@ public class Author {
 	@Column(length = 50, nullable = false)
 	private String name;
 	
-	@OneToOne(mappedBy = "author")
+	@OneToOne(mappedBy = "author") // 被動關聯
 	private Biography biography;
 	
-	@OneToMany(mappedBy = "author")
+	@OneToMany(mappedBy = "author") // 被動關聯
 	// @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
 	private List<Book> books;
 }

@@ -1,5 +1,6 @@
 package com.example.demo.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -8,25 +9,34 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
 @Entity
-public class Book {
+public class Publisher {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(length = 100, nullable = false)
+	@Column(length = 50, nullable = false)
 	private String name;
 	
-	@ManyToMany(mappedBy = "books") // 被動關聯
-	private List<Publisher> publishers;
+	@ManyToMany
+	@JoinTable(
+			name = "publisher_book",
+			joinColumns = @JoinColumn(name = "public_id"),
+			inverseJoinColumns = @JoinColumn(name = "book_id")
+			)
+	private List<Book> books;
 	
-	@ManyToOne
-	@JoinColumn(name = "author_id")
-	private Author author;
+	// 自建一個新增書籍的方法
+	public void addBook(Book book) {
+		if(book == null) {
+			books = new ArrayList<>();
+		}
+		addBook(book);
+	}
 }
