@@ -19,16 +19,18 @@ public class Test_ReadAuthor {
 	@Test
 	// @Transactional
 	public void read() {
-		// 查詢作者
+		// 查詢作者(含自傳)
 		List<Author> authors = authorRepository.findAll();
 		authors.forEach(author ->{
-			System.out.printf("ID:%d 姓名:%s %n", author.getId(), author.getName());
+			System.out.printf("ID:%d 姓名:%s 自傳:%s%n", 
+					author.getId(), author.getName(), author.getBiography().getDetails());
 		});
 		
-		// 查詢作者與書籍
+		// 查詢作者與書籍(含自傳)
 		List<Author> authors2 = authorRepository.findAllWithBooks();
 		authors2.forEach(author ->{
-			System.out.printf("ID:%d 姓名:%s 著作數量:%d%n", author.getId(), author.getName(), author.getBooks().size());
+			System.out.printf("ID:%d 姓名:%s 著作數量:%d 自傳:%s%n", 
+					author.getId(), author.getName(), author.getBooks().size(), author.getBiography().getDetails());
 		});
 	}
 }
