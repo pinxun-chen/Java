@@ -3,6 +3,7 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 
 import com.example.demo.model.entity.Book;
 import com.example.demo.model.entity.Publisher;
@@ -22,6 +23,7 @@ public class Test_RemoveBookFromPublisher {
 	
 	@Test
 	@Transactional
+	@Commit // 在測試環境中使用 @Transactional 要配合使用 @Commit 讓事務提交
 	public void remove() {
 		
 		Book book1 = bookRepository.findById(1).get();
