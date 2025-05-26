@@ -18,7 +18,7 @@ public class Test_ReadBiography {
 	public void read() {
 		List<Biography> biographies = biographyRepository.findAllWithAuthor();
 		biographies.forEach(biography -> {
-			System.out.printf("UD:%d 內容:%s 作者:%s%n"
+			System.out.printf("ID:%d 內容:%s 作者:%s%n"
 					, biography.getId(), biography.getDetails(), biography.getAuthor().getName());
 		});
 	}
