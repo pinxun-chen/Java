@@ -1875,3 +1875,102 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2025-05-26T14:13:02.327+08:00  INFO 1120 --- [springboot-jpa-book] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-05-26T14:13:02.328+08:00  INFO 1120 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-05-26T14:13:02.333+08:00  INFO 1120 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-26T14:24:24.130+08:00  INFO 3796 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : Starting Test_ReadBiography using Java 21.0.6 with PID 3796 (started by NTPU in E:\Eclipse\class-project\springboot-jpa-book)
+2025-05-26T14:24:24.132+08:00  INFO 3796 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : No active profile set, falling back to 1 default profile: "default"
+2025-05-26T14:24:24.494+08:00  INFO 3796 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-26T14:24:24.495+08:00  INFO 3796 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-05-26T14:24:24.519+08:00  INFO 3796 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.AuthorRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:24:24.520+08:00  INFO 3796 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.BiographyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:24:24.521+08:00  INFO 3796 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.BookRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:24:24.521+08:00  INFO 3796 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
+2025-05-26T14:24:24.527+08:00  INFO 3796 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-26T14:24:24.528+08:00  INFO 3796 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-26T14:24:24.547+08:00  INFO 3796 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+2025-05-26T14:24:24.761+08:00  INFO 3796 --- [springboot-jpa-book] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-26T14:24:24.796+08:00  INFO 3796 --- [springboot-jpa-book] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-26T14:24:24.818+08:00  INFO 3796 --- [springboot-jpa-book] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-26T14:24:25.001+08:00  INFO 3796 --- [springboot-jpa-book] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-26T14:24:25.020+08:00  INFO 3796 --- [springboot-jpa-book] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-26T14:24:25.117+08:00  INFO 3796 --- [springboot-jpa-book] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5486ee92
+2025-05-26T14:24:25.118+08:00  INFO 3796 --- [springboot-jpa-book] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-26T14:24:25.164+08:00  INFO 3796 --- [springboot-jpa-book] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.34
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-26T14:24:25.671+08:00  INFO 3796 --- [springboot-jpa-book] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-26T14:24:25.710+08:00  INFO 3796 --- [springboot-jpa-book] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-26T14:24:26.185+08:00  INFO 3796 --- [springboot-jpa-book] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-26T14:24:26.521+08:00  INFO 3796 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : Started Test_ReadBiography in 2.589 seconds (process running for 3.144)
+2025-05-26T14:24:26.845+08:00  INFO 3796 --- [springboot-jpa-book] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-26T14:24:26.847+08:00  INFO 3796 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-26T14:24:26.851+08:00  INFO 3796 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-26T14:31:21.505+08:00  INFO 14548 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : Starting Test_ReadBiography using Java 21.0.6 with PID 14548 (started by NTPU in E:\Eclipse\class-project\springboot-jpa-book)
+2025-05-26T14:31:21.506+08:00  INFO 14548 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : No active profile set, falling back to 1 default profile: "default"
+2025-05-26T14:31:21.874+08:00  INFO 14548 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-26T14:31:21.875+08:00  INFO 14548 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-05-26T14:31:21.896+08:00  INFO 14548 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.AuthorRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:31:21.896+08:00  INFO 14548 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.BiographyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:31:21.897+08:00  INFO 14548 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.BookRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:31:21.897+08:00  INFO 14548 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
+2025-05-26T14:31:21.905+08:00  INFO 14548 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-26T14:31:21.906+08:00  INFO 14548 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-26T14:31:21.926+08:00  INFO 14548 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 3 JPA repository interfaces.
+2025-05-26T14:31:22.154+08:00  INFO 14548 --- [springboot-jpa-book] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-26T14:31:22.188+08:00  INFO 14548 --- [springboot-jpa-book] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-26T14:31:22.210+08:00  INFO 14548 --- [springboot-jpa-book] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-26T14:31:22.394+08:00  INFO 14548 --- [springboot-jpa-book] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-26T14:31:22.414+08:00  INFO 14548 --- [springboot-jpa-book] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-26T14:31:22.509+08:00  INFO 14548 --- [springboot-jpa-book] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2d6a0766
+2025-05-26T14:31:22.511+08:00  INFO 14548 --- [springboot-jpa-book] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-26T14:31:22.554+08:00  INFO 14548 --- [springboot-jpa-book] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.34
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-26T14:31:23.045+08:00  INFO 14548 --- [springboot-jpa-book] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-26T14:31:23.088+08:00  INFO 14548 --- [springboot-jpa-book] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-26T14:31:23.560+08:00  INFO 14548 --- [springboot-jpa-book] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-26T14:31:23.901+08:00  INFO 14548 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : Started Test_ReadBiography in 2.591 seconds (process running for 3.149)
+2025-05-26T14:31:24.223+08:00  INFO 14548 --- [springboot-jpa-book] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-26T14:31:24.224+08:00  INFO 14548 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-26T14:31:24.228+08:00  INFO 14548 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-26T14:34:52.999+08:00  INFO 2852 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : Starting Test_ReadBiography using Java 21.0.6 with PID 2852 (started by NTPU in E:\Eclipse\class-project\springboot-jpa-book)
+2025-05-26T14:34:53.000+08:00  INFO 2852 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : No active profile set, falling back to 1 default profile: "default"
+2025-05-26T14:34:53.375+08:00  INFO 2852 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-26T14:34:53.376+08:00  INFO 2852 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-05-26T14:34:53.398+08:00  INFO 2852 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.AuthorRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:34:53.398+08:00  INFO 2852 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.BiographyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:34:53.399+08:00  INFO 2852 --- [springboot-jpa-book] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.BookRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-05-26T14:34:53.400+08:00  INFO 2852 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 0 JDBC repository interfaces.
+2025-05-26T14:34:53.408+08:00  INFO 2852 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-05-26T14:34:53.409+08:00  INFO 2852 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-26T14:34:53.428+08:00  INFO 2852 --- [springboot-jpa-book] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+2025-05-26T14:34:53.661+08:00  INFO 2852 --- [springboot-jpa-book] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-26T14:34:53.692+08:00  INFO 2852 --- [springboot-jpa-book] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-26T14:34:53.713+08:00  INFO 2852 --- [springboot-jpa-book] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-26T14:34:53.895+08:00  INFO 2852 --- [springboot-jpa-book] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-26T14:34:53.917+08:00  INFO 2852 --- [springboot-jpa-book] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-26T14:34:54.024+08:00  INFO 2852 --- [springboot-jpa-book] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2d6a0766
+2025-05-26T14:34:54.026+08:00  INFO 2852 --- [springboot-jpa-book] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-26T14:34:54.070+08:00  INFO 2852 --- [springboot-jpa-book] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.34
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-26T14:34:54.581+08:00  INFO 2852 --- [springboot-jpa-book] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-26T14:34:54.626+08:00  INFO 2852 --- [springboot-jpa-book] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-26T14:34:55.143+08:00  INFO 2852 --- [springboot-jpa-book] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-26T14:34:55.471+08:00  INFO 2852 --- [springboot-jpa-book] [main] com.example.demo.Test_ReadBiography      : Started Test_ReadBiography in 2.682 seconds (process running for 3.234)
+2025-05-26T14:34:55.808+08:00  INFO 2852 --- [springboot-jpa-book] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-26T14:34:55.809+08:00  INFO 2852 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-26T14:34:55.813+08:00  INFO 2852 --- [springboot-jpa-book] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
