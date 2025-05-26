@@ -22,6 +22,7 @@ public class Author {
 	@Column(length = 50, nullable = false)
 	private String name;
 	
-	@OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "author")
+	// @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
 	private List<Book> books;
 }
