@@ -9,16 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.entity.Author;
 import com.example.demo.repository.AuthorRepository;
-import com.example.demo.repository.BookRepository;
 
 @SpringBootTest
-public class Test_Read {
+public class Test_ReadAuthor {
 	
 	@Autowired
-	private AuthorRepository authorRepository;
-	
-	@Autowired
-	private BookRepository bookRepository;
+	private AuthorRepository authorRepository;	
 
 	@Test
 	// @Transactional
