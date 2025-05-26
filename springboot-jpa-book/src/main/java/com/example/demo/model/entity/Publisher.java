@@ -27,16 +27,16 @@ public class Publisher {
 	@ManyToMany
 	@JoinTable(
 			name = "publisher_book",
-			joinColumns = @JoinColumn(name = "public_id"),
+			joinColumns = @JoinColumn(name = "publisher_id"),
 			inverseJoinColumns = @JoinColumn(name = "book_id")
 			)
 	private List<Book> books;
 	
 	// 自建一個新增書籍的方法
 	public void addBook(Book book) {
-		if(book == null) {
+		if(books == null) {
 			books = new ArrayList<>();
 		}
-		addBook(book);
+		books.add(book);
 	}
 }
