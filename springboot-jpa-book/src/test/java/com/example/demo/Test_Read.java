@@ -26,5 +26,9 @@ public class Test_Read {
 		authors.forEach(author ->{
 			System.out.printf("ID:%d 姓名:%s %n", author.getId(), author.getName());
 		});
+		
+		authors.forEach(author ->{
+			System.out.printf("ID:%d 姓名:%s 著作數量:%d%n", author.getId(), author.getName(), author.getBooks().size());
+		});
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,6 +22,6 @@ public class Author {
 	@Column(length = 50, nullable = false)
 	private String name;
 	
-	@OneToMany(mappedBy = "author")
+	@OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
 	private List<Book> books;
 }
