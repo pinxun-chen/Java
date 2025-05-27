@@ -1,8 +1,10 @@
+
 package com.example.demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.InsufficientAmountException;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.service.BookService;
 import com.example.demo.service.BuyService;
@@ -15,9 +17,12 @@ public class BuyServiceImpl implements BuyService {
 	@Autowired
 	private BookService bookService;
 	
-	@Transactional
+	@Transactional(
+			rollbackOn = {InsufficientAmountException.class},
+			dontRollbackOn = {RuntimeException.class}
+	)
 	@Override
-	public void buyOneBook(String username, Integer bookId) {
+	public void buyOneBook(String username, Integer bookId) throws InsufficientAmountException {
 		System.out.printf("%s 要買書%n", username);
 		// 1. 查詢書本價格
 		Integer bookPrice = bookService.getBookPrice(bookId);
