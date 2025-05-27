@@ -1,11 +1,9 @@
-
 package com.example.demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.exception.InsufficientAmountException;
-import com.example.demo.repository.BookRepository;
 import com.example.demo.service.BookService;
 import com.example.demo.service.BuyService;
 
@@ -17,10 +15,9 @@ public class BuyServiceImpl implements BuyService {
 	@Autowired
 	private BookService bookService;
 	
-	@Transactional(
-			rollbackOn = {InsufficientAmountException.class},
-			dontRollbackOn = {RuntimeException.class}
-	)
+	// RuntimeException 預設會回滾, 可以透過 dontRollbackOn 來改變
+	// Exception 預設不會回滾, 可以透過 rollbackOn 來定義
+	@Transactional (rollbackOn = {InsufficientAmountException.class}, dontRollbackOn = {RuntimeException.class})
 	@Override
 	public void buyOneBook(String username, Integer bookId) throws InsufficientAmountException {
 		System.out.printf("%s 要買書%n", username);
