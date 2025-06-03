@@ -24,4 +24,12 @@ public class ChatController {
 	public void send(@DestinationVariable String roomId, ChatMessage chatMessage) {
 		messagingTemplate.convertAndSend("/topic/message/" + roomId, chatMessage);
 	}
+	
+	/**
+	 * 處理來自 "/app/broadcast" 的訊息, 並將訊息廣播到 "/topic/broadcast" (所有聊天室)
+	 * @param chatMessage 聊天訊息
+	 * */
+	public void broadcast(ChatMessage chatMessage) {
+		messagingTemplate.convertAndSend("/topic/broadcast", chatMessage);
+	}
 }
