@@ -76,7 +76,7 @@
             }
             content + '[廣播] ' + content;
             // 傳送訊息到後端
-            stompClient.send("/app/broadcast", {}, JSON.stringify({'from': from, 'content': + content}));
+            stompClient.send("/app/broadcast", {}, JSON.stringify({'from': from, 'content': content}));
             // 清空訊息輸入框
             document.getElementById('content').value = '';
         }
